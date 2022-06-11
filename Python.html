@@ -1,0 +1,671 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Python</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 40vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="459a0c12-24a8-4967-9b02-e4ae70671b27" class="page sans"><header><img class="page-cover-image" src="Python/learn-and-master-python-in-a-month.png" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="Python/2048px-Python-logo-notext.svg.png"/></div><h1 class="page-title">Python</h1></header><div class="page-body"><p id="3679e83d-6dc4-4ac8-8aa9-742f5494d2da" class=""><strong>Learn and Master Python in a Month(n)</strong></p><h1 id="e28ced38-5177-48a8-bb47-c3ae8691a1dc" class=""><strong>I will show you how to learn and master Python in one month.</strong></h1><p id="7c9fa4b5-bf2d-4b3e-8052-8d336a9680f7" class="">Remember, one month has plenty of time. If you can spend 6–7 hours every day. You will finish much more than you think.</p><h1 id="3f299d11-5892-4164-aac0-3e9bd7faca97" class=""><strong>One Month Goal:</strong></h1><p id="09ab3922-e704-4219-9c8b-701697f2d6aa" class="">As a beginner, your first-month goal should be-</p><ol type="1" id="08afbafd-1912-4764-b2f2-2ec49eeeb1de" class="numbered-list" start="1"><li>Get familiar with basic concepts (variable, condition, list, loop, function)</li></ol><ol type="1" id="b661dd93-db34-4ceb-b0db-4ff293939a9d" class="numbered-list" start="2"><li>Practice 30+ coding problems</li></ol><ol type="1" id="a7181c64-4211-4f38-8f2d-086178c1852a" class="numbered-list" start="3"><li>Build 2 projects to apply the concepts</li></ol><ol type="1" id="eb67f7e3-0c50-43bc-983b-23679590cf0c" class="numbered-list" start="4"><li>Get familiar with at least 2 frameworks</li></ol><ol type="1" id="cceaa983-38fc-40d2-82d7-fb095fd8626c" class="numbered-list" start="5"><li>Get started with IDE, Github, hosting, services, etc</li></ol><p id="1855c17c-5dcb-438f-9952-98f8b81d7fe3" class="">This will make you a <strong>Junior Python Developer.</strong></p><h1 id="f3112d60-f2e8-4162-aadf-b778900a78a5" class=""><strong>Overall plan:</strong></h1><p id="54058064-2113-4afc-8f07-fb2f2db212af" class="">Now I will break down the weekly plan for you.</p><figure id="e1a0845e-464b-4293-820c-33c3f007c166" class="image"><a href="https://www.programming-hero.com/blog/assets/images/blog/Learn-and-Master-Python-in-a-Month(datelines).png"><img src="https://www.programming-hero.com/blog/assets/images/blog/Learn-and-Master-Python-in-a-Month(datelines).png"/></a></figure><h1 id="1c8ba39b-5186-4b0b-acef-78c008e87fb2" class=""><strong>Week-1: Get Familiar with Python</strong></h1><p id="e88965b7-b764-4a39-a972-d0da6de824be" class="">Just be curious to see how things can be done in Python. Check as many things as possible.</p><ol type="1" id="c6fcffe2-6a2e-4573-a3ae-8a49b8a626f4" class="numbered-list" start="1"><li><strong>Day -4: Medium Coding Problems (6 hours): </strong>Reverse a string (Check palindrome), Calculate GCD, Merge two sorted Array, Number guessing game, Calculate the age, etc.</li></ol><ol type="1" id="03f6f9c6-bf2d-4385-87c1-a382bb31ecf0" class="numbered-list" start="2"><li><strong>Day-5: Data Structures (6 hours): </strong>Stack, Queue, Dictionary, Tuples, Tree, Linked List.</li></ol><ol type="1" id="f7eb4d6e-0495-4dd7-8116-3e89cabef7b5" class="numbered-list" start="3"><li><strong>Day-6: OOP (6 hours): </strong>Object, Class, Method and constructor, OOP- Inheritance</li></ol><ol type="1" id="84a4cf77-7aee-4b9e-a1b8-df77ce8ba842" class="numbered-list" start="4"><li><strong>Day-7: Algorithm (6 hours): </strong>Search (Linear and Binary search), Sort (Bubble sort, Selection Sort), Recursive function (factorial, Fibonacci series), Time Complexity (Linear, Quadratic, and Constant)</li></ol><p id="85e04383-bb74-4c40-a42f-1b003780c671" class="">
+</p><blockquote id="931111e2-4d00-41cc-8d2c-2f476d386fe9" class=""><strong>Don’t Install Python:</strong></blockquote><blockquote id="3a825a58-a1ea-48a3-a73c-c8522617f3ec" class="">This one is contradictory. But trust me. I know a few friends who burned their desire by failing to install a language kit or an IDE. So, my recommendation is to jump into an android app like <a href="https://play.google.com/store/apps/details?id=com.learnprogramming.codecamp">Programming Hero</a> or online code playground <a href="https://repl.it/">Repl</a> and start exploring the language. Don&#x27;t make the installing Python is your first task if you are not tech savvy.</blockquote><h1 id="21215ffa-f8f9-4c52-b01a-f7d275c33a6b" class=""><strong>Week-2: Start Software Development (Build Project)</strong></h1><p id="d7b53d70-4b3a-4107-b665-b71330cd4120" class="">Get into software development. Try out the things together to make a real-world project.</p><ol type="1" id="4c8db1d4-3f4c-4414-a691-5a89a76e3d47" class="numbered-list" start="1"><li><strong>Day-1: Get Familiar with an IDE(5 hours): </strong>IDE is the playground where you will write code for largest projects. You need to be good at one IDE. I will recommend starting with <a href="https://code.visualstudio.com/docs/python/python-tutorial">VS code install Python extension</a> or Jupyter notebook.</li></ol><ol type="1" id="431111b0-f43e-430a-9507-467c159a8577" class="numbered-list" start="2"><li><strong>Day -2: Github (6 hour): </strong>Explore<a href="https://codeburst.io/number-one-piece-of-advice-for-new-developers-ddd08abc8bfa"> Github</a>, create a repository. Try out Commit, diff, and Push code. Also, learn branch, merge, and pull Requests.</li></ol><ol type="1" id="4513769e-755f-4e64-8146-ef6e456eb453" class="numbered-list" start="3"><li><strong>Day 3: First Project: Simple Calculator (4 hours): </strong>Get familiar with Tkinter. <a href="https://www.simplifiedpython.net/python-calculator/">Create a simple calculator</a>.</li></ol><ol type="1" id="2c537ba2-acc5-49d2-a6ad-d653c9d62432" class="numbered-list" start="4"><li><strong>Day 4 5, 6: Personal Project (5 hours each day): </strong>Choose one of the projects and start working on it. If you have no idea what project you can work on. Check out this list: <a href="https://www.quora.com/What-are-some-good-Python-projects-for-an-intermediate-programmer/answer/Jhankar-Mahbub-2">Some good Python projects</a>.</li></ol><ol type="1" id="d7eeffc2-51b1-4073-a6f0-3c7dc4f8d8ea" class="numbered-list" start="5"><li><strong>Day-7: Hosting (5 hours): </strong>Learn Server and hosting <a href="https://devcenter.heroku.com/articles/getting-started-with-python">to host your project</a>. Create a Heroku setup and deploy the app you built.</li></ol><p id="cbaecd01-a9d4-491e-8f3c-caa302482434" class=""><strong>Why Project:</strong></p><p id="7cf45103-32c5-4556-9d8b-6e81d8b21b6c" class="">Just by following the steps in a class or in a video, you won’t build your ability to think. So, you have to apply your knowledge to a project. Once, you struggle to find an answer, you will learn it.</p><figure id="b635cc69-4a0c-4f23-a1bf-5952eace5f9a" class="image"><a href="https://www.programming-hero.com/blog/assets/images/blog/Learn-and-Master-Python-in-a-Month(datelines-2).png"><img src="https://www.programming-hero.com/blog/assets/images/blog/Learn-and-Master-Python-in-a-Month(datelines-2).png"/></a></figure><h1 id="2bd9156a-c15d-4d9f-8ab4-570c834da3bb" class=""><strong>Week-3: Get Comfortable as a Programmer</strong></h1><p id="83b734ff-34b7-4640-842d-d96d6ae18e70" class="">Your week 3 goal is to get the overall process of a software development process. You will not need to master all of these. But you should know some basic parts because they will impact your everyday job.</p><ol type="1" id="d5d71b02-8b1a-4dff-beba-3a0b6e52b053" class="numbered-list" start="1"><li><strong>Day -1: Database Basics (6 hours): </strong>Basic SQL query (Create Table, Select, Where, Update), SQL Function (Avg, Max, Count), Relation database (Normalization), Inner Join, Outer Join, etc</li></ol><ol type="1" id="7c7a5b71-10b0-4a39-998b-7c90ce955e9b" class="numbered-list" start="2"><li><strong>Day-2: Use Database with Python: (5 hours): </strong>Use a database framework (SQLite or Pandas), Connect to a database, create and insert data in multiple tables, Read data from tables.</li></ol><ol type="1" id="b00f6834-325c-4083-a8af-2e246d0badb4" class="numbered-list" start="3"><li><strong>Day-3: API (5 hour): </strong>How to call an API. Learn JSON, micro-service, Rest API.</li></ol><ol type="1" id="27e1495e-b0a1-4af0-a311-acf54cf3c425" class="numbered-list" start="4"><li><strong>Day-4: Numpy (4 hours): </strong><a href="https://towardsdatascience.com/lets-talk-about-numpy-for-datascience-beginners-b8088722309f">Get Familiar with Numpy</a> and practice first 30 <a href="https://github.com/rougier/numpy-100/blob/master/100_Numpy_exercises.md">Numpy exercises</a></li></ol><ol type="1" id="9de92d30-dde7-437a-978c-eba0d5015598" class="numbered-list" start="5"><li><strong>Day-5, 6: Portfolio Website: (5 hours each day): </strong>Learn Django, <a href="https://realpython.com/get-started-with-django-1/">Build a portfolio website with Django</a>. Also checkout Flask framework.</li></ol><ol type="1" id="e52376b1-65ae-495a-855a-c761af924991" class="numbered-list" start="6"><li><strong>Day-7: Unit test, log, debug (4 hours): </strong>Learn unit test (PyTest), how to set up and check Log, and use Breakpoints.</li></ol><p id="32296a11-12e5-40eb-9ee3-898cb0941385" class=""><strong>True-time (Secret):</strong></p><p id="c170ddeb-0102-4e2e-b517-6b906605980d" class="">If you are super crazy and super dedicated, you can finish this routine in a month. You have to make —</p><ol type="1" id="248da367-0e8c-4250-80d6-0fd1798027de" class="numbered-list" start="1"><li>Learning Python as your full-time activity. You will start at 8.00 am and you keep doing it until 5.00pm. In between, you will take a lunch break and small snacks break (1hour total).</li></ol><ol type="1" id="f81d3144-0f5b-467b-b92c-eb719f81653c" class="numbered-list" start="2"><li>At 8.00 make a shortlist of things that you will learn today. After that take one hour to revise and practice the things you have learned yesterday.</li></ol><ol type="1" id="73fb6b04-5f7a-4b48-b411-55d8812f5d2d" class="numbered-list" start="3"><li>From 9.00–12.00: you will learn and practice less. After lunch, you will practice more and if you get stuck you will search online.</li></ol><ol type="1" id="c21cf4f0-fd66-4a6d-b2a9-7d7c7c7d50dc" class="numbered-list" start="4"><li>Strictly maintains, 4–5 hours of learning and 2–3 hours of practice every single day (max you can take 1-day/week break).</li></ol><ol type="1" id="8e3fb583-bea3-4941-98cb-dfb48bebd0ad" class="numbered-list" start="5"><li>Your friends will think that you are crazy. So, be that crazy.</li></ol><p id="84d5f530-6b5a-49a2-be81-3eee6959da2b" class="">If you have a full-time job or you are a student, it will take longer. As a full time student, it took me 8 months to finish this list. Now I work as a senior developer. My wife who works in a major bank in the USA. It took 6 months for her to finish it. So, it doesn’t matter how long it takes, finish the list.</p><figure id="3e8ca0b8-feef-4b5c-b652-542119bae1f9" class="image"><a href="https://miro.medium.com/max/627/1*tCawKCCx4RjSSFtsG7W-3Q.png"><img src="https://miro.medium.com/max/627/1*tCawKCCx4RjSSFtsG7W-3Q.png"/></a></figure><h1 id="0dec940f-ca9b-4a22-a60c-5ab657a18806" class=""><strong>Week-4: Get Serious to Get a Job(intern)</strong></h1><p id="873b2950-8d83-412f-a12e-68157039ffd9" class="">Your week 4 goal is to seriously think about getting hired. Even you don’t want to get hired right now, you will learn a lot just by exploring the path.</p><ol type="1" id="a457e733-5de0-42a4-a414-61a35229fa5b" class="numbered-list" start="1"><li><strong>Day-1: Resume: (5 hours): </strong>Build a one-page Resume. Put your skills summary at the top. Must put the lists of projects with Github links.</li></ol><ol type="1" id="6a5310fb-4151-4c2a-a8c2-4b6f42017058" class="numbered-list" start="2"><li><strong>Day-2: Portfolio Website (6 hours): </strong>Write two or more blogs. Add those in the previous Portfolio website that you have developed.</li></ol><ol type="1" id="ffd30249-eb54-49ab-a472-e8a5463de996" class="numbered-list" start="3"><li><strong>Day -3: LinkedIn Profile(4 hours): </strong>Create a LinkedIn Profile. Put everything from your resume in your LinkedIn.</li></ol><ol type="1" id="b29efdfd-ccef-49f9-ad24-e246c486e425" class="numbered-list" start="4"><li><strong>Day -4: Interview Preparation(7 hours): </strong>Google common interview question. Practice 10 interview coding problems in a white paper. Extract previous interview questions from sites like Glassdoor, Careercup, etc.</li></ol><ol type="1" id="8bab106a-7c89-4d86-8ecf-95500f3e3460" class="numbered-list" start="5"><li><strong>DAY -5: Networking(~ hours): </strong>Get out of your closet. Start going to Meetups, Career fair to Meet other developers and recruiters.</li></ol><ol type="1" id="b6bf501d-6d56-43d2-9b05-7898b65d2794" class="numbered-list" start="6"><li><strong>DAY -6: Just Apply (~ hours): </strong>Google “Python Jobs”, check out LinkedIn Job and local job sites. Select 3 jobs to apply. Customize your resume for each job. Find 2 or 3 things in each job requirements that you don’t know. Spend the next 3–4 days to learn them.</li></ol><ol type="1" id="4fb28118-fce5-40d6-a6d1-9cb391479c56" class="numbered-list" start="7"><li><strong>Day-7: Learn Through Rejections (~ hours): </strong>Every time you got rejected, figure out 2 things that you should have known to get the job. Now, spend the next 4–5 days to master each of them. In this way, every rejection will make you a better developer.</li></ol><h1 id="a7e85bc5-4201-4d6c-ae22-021742b6d88d" class=""><strong>Ready for a Job:</strong></h1><p id="9e5df535-e2e6-4b6b-8e9a-7c5732640dee" class="">The truth is- <strong>you will never be 100% ready for a job</strong>. All you have to do is to learn one or two things very well. And get familiar with other things to jump over the interview wall. Once you start a job, you will learn a lot from there.</p><h1 id="006a4c81-22fa-41b3-b53b-23a16321d517" class=""><strong>Enjoy the process:</strong></h1><p id="602d26d6-2a4b-40d6-bcb6-3bf02b531ed7" class="">Learning is a process. Learning will have challenges. <strong>The more you struggle, the better developer you will become.</strong></p><p id="594f63b6-36f9-4cd0-a440-83dce70ee5af" class="">If you can finish everything in 28 days, you are gold. On the other hand, if you can finish 60–70% of the contents, you will develop the right characteristics to become a Programmer.</p><h1 id="eeeef8f1-5e11-4884-a35e-1fb88b5ffb8b" class=""><strong>Where to learn from:</strong></h1><p id="b490dcee-11c7-4f3d-93f4-a978b88e9f45" class="">If you are still wondering from where you should start, feel free to check out</p><ol type="1" id="aa2722d7-1593-4e29-9d5f-ea0a521608ed" class="numbered-list" start="1"><li><a href="https://play.google.com/store/apps/details?id=com.learnprogramming.codecamp">Programming Hero.</a> (fun android app to learn Python)</li></ol><ol type="1" id="e564b1d8-1378-4451-bd1e-dbc2303f5325" class="numbered-list" start="2"><li><a href="https://www.datacamp.com/learn-python-with-anaconda/">Learn Python for Data Science </a>(Free: web-based resources to learn)</li></ol><ol type="1" id="90def633-4539-4e41-bc20-80171ee4069c" class="numbered-list" start="3"><li><a href="https://www.youtube.com/watch?list=PLsyeobzWxl7poL9JTVyndKe62ieoN-MZ3&amp;v=QXeEoD0pB3E">Youtube video series</a> (Learn by watching videos)</li></ol><p id="3813e165-7919-44b4-b4d2-e3403214ce52" class=""><strong>So, start the journey. Future is yours.</strong></p><p id="58a5cf99-1506-46ed-9ace-baec31893e35" class="">
+</p></div></article></body></html>
